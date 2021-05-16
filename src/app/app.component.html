@@ -1,0 +1,67 @@
+<div class="container">
+  <!-- left side div -->
+  <div class="example-container" id="left-div">
+    <div class="head">
+      <div class="head1">
+        <h4>New Worksheet</h4>
+        <!-- <input type="button" class="btn" value="Create Worksheet"> -->
+      </div>
+      <div class="head2">
+        <input type="button" class="btn" value="Create Worksheet" (click) = "captureScreen()"/>
+      </div>
+    </div>
+    
+    <div class="second-head">
+      <input type="text" placeholder="Worksheet Name">
+      <input type="text" placeholder="details">
+      <select name="select class">
+        <option>1st</option>
+        <option>2nd</option>
+        <option>3rd</option>
+        <option>4th</option>
+      </select>
+      <input type="button" value="Add Section">
+    </div>
+
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="todo"
+      [cdkDropListConnectedTo]="[doneList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+    <input type="text" value="enter section name" class="section">
+      <div class="example-box" *ngFor="let item of todo" >
+        {{ item }}
+        <input type="button" value="Remove">
+      </div>
+    </div>
+  </div>
+
+  <!-- right side div -->
+  <div class="example-container" id="right-div">
+    <div class="head">
+      <div class="head1"><h4>Resource Bank</h4></div>
+      <div class="head2">
+        <input type="button" class="btn" value="New Question" />
+      </div>
+    </div>
+    <div class="second-head">
+      <input type="search" class="search">
+    </div>
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="[todoList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="example-box" *ngFor="let item of done" cdkDrag>
+        {{ item }}
+        <input type="button" value="Add">
+      </div>
+    </div>
+  </div>
+</div>
